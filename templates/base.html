@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootcss/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>
+        {% block head_title %}
+        learngh
+        {% endblock head_title %}
+    </title>
+</head>
+
+<body>
+    {% include 'messages_display.html' %}
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'posts:list' %}">Home</a></li>
+                {% if not request.user.is_authenticated %}
+                <li class="breadcrumb-item"><a href="{% url 'accounts:login' %}">login</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'accounts:register' %}">register</a></li>
+                {% else %}
+                <li class="breadcrumb-item"><a href="{% url 'accounts:logout' %}">logout</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'posts:create' %}">Create</a></li>
+                {% endif %}
+                {% block post_detail_link%}{% endblock %}
+            </ol>
+        </nav>
+        {% block content %}{% endblock content %}
+    </div>
+    <link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %}">
+</body>
+
+</html>

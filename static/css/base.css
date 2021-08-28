@@ -1,0 +1,29 @@
+h1 {
+    color: #077777;
+}
+h3 {
+    color: #0ca170;
+}
+.txtbox {
+    width: 50px;
+}
+.box {
+    height:250px;
+}
+/* .img-responsive {
+    height: 280px;
+    width: 430px;
+    align-self: center;
+    border-radius: 5%;
+    margin-top: 20px;
+} */
+img {
+
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
+}
+.search {
+    margin: 10px 0 0 10px;
+    flex: content;
+}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block head_title %}
+{{post.title}} | {{ block.super }}
+{% endblock head_title %}
+{% block post_detail_link%}
+<li class="breadcrumb-item"><a href="{{post.get_absolute_url}}">{{post.title}}</a></li>
+{% endblock %}
+{% block content %}
+<div class="col-sm-9">
+    {% if post.image %}
+    <div class="box">
+        <img src="{{ post.image.url }}" class="img-responsive" alt="photo">
+    </div>
+    {% endif %}
+    <p>Auther: {{post.user.username.capitalize}}</p>
+    <h3>
+        {{post.title}} | <small>{{post.publish_date}}</small> |
+        {% if post.draft %}
+        <small style="color:brown">Draft</small> |
+        {% endif %}
+    </h3>
+
+    {{post.content | safe}}</br>
+</div>
+{% endblock content %}
